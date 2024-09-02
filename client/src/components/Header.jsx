@@ -24,6 +24,22 @@ export default function Header() {
     }
   }, [location.search]);
 
+  useEffect(() => {
+    const back_url="https://mern-blogg-ivw5.onrender.com"
+    // call the  backend to get the user data
+    fetch(`${back_url}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("backend is active")
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   const handleSignout = async () => {
     try {
       const res = await fetch('/api/user/signout', {
