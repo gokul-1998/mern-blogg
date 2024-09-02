@@ -8,7 +8,7 @@ export default defineConfig({
       '/api': {
         // target: 'http://localhost:3000',
 
-        target: 'https://mern-blogg-mt0d.onrender.com',
+        target: 'https://mern-blogg-ivw5.onrender.com',
         changeOrigin: true, // Needed to change the origin of the host header to the target URL
         secure: true,
       },
