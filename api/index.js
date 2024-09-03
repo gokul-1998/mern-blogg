@@ -19,6 +19,9 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+  console.log('MongoDB URI:', process.env.MONGO);
+console.log('JWT Secret:', process.env.JWT_SECRET);
+
 
 const __dirname = path.resolve();
 
