@@ -38,7 +38,9 @@ app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/comment', commentRoutes);
 app.use('/api/post', postRoutes);
-
+app.get('/test', (req, res) => {
+  res.send('Hello World');
+});
 app.use(express.static(path.join(__dirname, '/client/dist')));
 
 app.get('*', (req, res) => {
