@@ -8,6 +8,7 @@ import postRoutes from './routes/post.route.js';
 import cookieParser from 'cookie-parser';
 import commentRoutes from './routes/comment.route.js';
 import path from 'path';
+import allowed_origins from './allowed_origins.js';
 
 dotenv.config();
 
@@ -24,9 +25,10 @@ const __dirname = path.resolve();
 
 const app = express();
 
+
 // Use CORS middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://aswinblog.netlify.app','http://localhost:5173','http://localhost:*'],
+  origin: allowed_origins,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 }));
