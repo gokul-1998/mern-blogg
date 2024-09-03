@@ -3,9 +3,10 @@ const allowed_origins = [
     'https://aswinblog.netlify.app',
     'http://localhost:5173',
     'http://localhost:*',
-    'https://xamprepp.netlify.app/',
+    'https://xamprepp.netlify.app',
     /https:\/\/deploy-preview-\d+--xamprepp\.netlify\.app/,
-    /http:\/\/localhost:\d+/    
+    /http:\/\/localhost:\d+/   ,
+     
 
 ];
 
