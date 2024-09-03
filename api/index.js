@@ -26,7 +26,7 @@ const app = express();
 
 // Use CORS middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://aswinblog.netlify.app'],
+  origin: ['http://localhost:3000', 'https://aswinblog.netlify.app','http://localhost:5173','http://localhost:*'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 }));
