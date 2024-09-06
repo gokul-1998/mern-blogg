@@ -78,7 +78,8 @@ export const googleCheck = async (req, res, next) => {
   try {
     const user = await User.findOne({ email });
     if (user) {
-      res.status(200).json({ exists: true });
+      const { password, ...userData } = user._doc; // Exclude password from the response
+      res.status(200).json({ exists: true, user: userData });
     } else {
       res.status(200).json({ exists: false });
     }
@@ -86,3 +87,4 @@ export const googleCheck = async (req, res, next) => {
     next(error);
   }
 };
+
