@@ -120,8 +120,17 @@ export const getUsers = async (req, res, next) => {
 };
 
 export const getUser = async (req, res, next) => {
+  const identifier = req.params.identifier;
+  let user;
+
   try {
-    const user = await User.findById(req.params.userId);
+    // Check if the identifier is a valid MongoDB ObjectId
+    if (identifier.match(/^[0-9a-fA-F]{24}$/)) {
+      user = await User.findById(identifier);
+    } else {
+      user = await User.findOne({ username: identifier });
+    }
+
     if (!user) {
       return next(errorHandler(404, 'User not found'));
     }
