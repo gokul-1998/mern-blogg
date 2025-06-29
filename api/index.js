@@ -1,6 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import fs from 'fs';
+import https from 'https';
 import cors from 'cors';  // Import cors
 import userRoutes from './routes/user.route.js';
 import authRoutes from './routes/auth.route.js';
@@ -9,6 +11,7 @@ import cookieParser from 'cookie-parser';
 import commentRoutes from './routes/comment.route.js';
 import path from 'path';
 import allowed_origins from './allowed_origins.js';
+import corsOptions from './corsOptions.js';
 
 dotenv.config();
 
@@ -27,11 +30,7 @@ const app = express();
 
 
 // Use CORS middleware
-app.use(cors({
-  origin: allowed_origins,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true,
-}));
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(cookieParser());
@@ -60,6 +59,14 @@ app.use((err, req, res, next) => {
   });
 });
 
+const options = {
+  key: fs.readFileSync('/home/pandey/pallavi/gokul_repos/mern-blogg/api/localhost-key.pem'),
+  cert: fs.readFileSync('/home/pandey/pallavi/gokul_repos/mern-blogg/api/localhost.pem'),
+};
+
+// https.createServer(options, app).listen(3000, () => {
+//   console.log('Server is running on https://localhost:3000');
+// });
 app.listen(3000, () => {
   console.log('Server is running on port 3000!');
 });
